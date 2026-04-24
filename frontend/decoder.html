@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIN Decoder</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <script type="module" src="js/vin.js" defer></script>
+</head>
+<body class="app-page">
+    <header class="topbar">
+        <nav class="nav-links" aria-label="Primary">
+            <a class="nav-link active" href="decoder.html">Decoder</a>
+            <a class="nav-link" href="history.html">History</a>
+        </nav>
+    </header>
+
+    <main class="app-shell">
+        <section class="hero-panel">
+            <div>
+                <h1>VIN Decoder</h1>
+                <p class="hero-copy">Enter a 17-character VIN to get a structured vehicle report from the API.</p>
+            </div>
+
+            <form id="vinForm" class="vin-form" novalidate>
+                <label class="sr-only" for="vinInput">VIN</label>
+                <input id="vinInput" name="vin" type="text" maxlength="17" autocomplete="off" placeholder="XXXXXXXXXXXXXXXXX" />
+                <button id="decodeBtn" class="submit-btn" type="submit">Decode VIN</button>
+            </form>
+
+            <div id="message" class="message" aria-live="polite"></div>
+        </section>
+
+        <section id="reportSection" class="report-panel hidden" aria-live="polite">
+            <div class="section-heading">
+                <h3>Decoded Vehicle Details</h3>
+            </div>
+
+            <div id="reportGrid" class="report-grid"></div>
+        </section>
+    </main>
+</body>
+</html>

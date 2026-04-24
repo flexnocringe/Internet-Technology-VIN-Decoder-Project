@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const https = require('https');
+const path = require('path');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/AuthRoutes');
 const vinRoutes = require('./routes/VinRoutes');
@@ -12,6 +13,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+const frontendPath = path.join(__dirname, '..', 'frontend');
+app.use(express.static(frontendPath));
+
+app.get('/', (_, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/vin', vinRoutes);
